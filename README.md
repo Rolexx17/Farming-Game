@@ -166,14 +166,14 @@ No external libraries are needed to run this game.
   <tr>
     <td align="center" style="border: 1px solid #555; padding: 10px;">
       <a href="https://github.com/Rolexx17">
-        <img src="https://github.com/Rolexx17.png" width="100" height="100" alt="Jess2Jes" style="border-radius: 50%;"/>
+        <img src="https://github.com/Rolexx17.png" width="100" height="100" alt="Rolexx17" style="border-radius: 50%;"/>
       </a>
       <br/>
       <a href="https://github.com/Rolexx17">Rolexx17</a>
     </td>
     <td align="center" style="border: 1px solid #555; padding: 10px;">
       <a href="https://github.com/cherriebuns">
-        <img src="https://github.com/cherriebuns.png" width="100" height="100" alt="Hans 展豪" style="border-radius: 50%;"/>
+        <img src="https://github.com/cherriebuns.png" width="100" height="100" alt="cherriebuns" style="border-radius: 50%;"/>
       </a>
       <br/>
       <a href="https://github.com/cherriebuns">cherriebuns</a>
