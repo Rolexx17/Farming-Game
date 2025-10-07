@@ -1,10 +1,10 @@
 EN | [ID](README_ID.md) | [CN](README_CN.md)
-# 🌾 Hay Day Lite: A Python Farming Sim
+# 🌾 Farming Game: A Python Farming Sim
 
 ![Python](https://img.shields.io/badge/python-3.x-blue.svg)
 ![Concepts](https://img.shields.io/badge/concepts-OOP_&_Inheritance-blueviolet.svg)
 
-Welcome to **Hay Day Lite**, a command-line farming simulation game built with Python. Manage your farm, plant crops, raise animals, and sell your products at the market. Your goal is to survive as long as possible by managing your money and paying an ever-increasing daily tax. This project is a comprehensive demonstration of Object-Oriented Programming, featuring inheritance, abstract classes, and a modular design.
+Welcome to **Farming Game**, a command-line farming simulation game built with Python. Manage your farm, plant crops, raise animals, and sell your products at the market. Your goal is to survive as long as possible by managing your money and paying an ever-increasing daily tax. This project is a comprehensive demonstration of Object-Oriented Programming, featuring inheritance, abstract classes, and a modular design.
 
 ---
 
