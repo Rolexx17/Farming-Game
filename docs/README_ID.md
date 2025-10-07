@@ -1,4 +1,4 @@
-[EN](README.md) | ID | [CN](README_CN.md)
+[EN](../README.md) | ID | [CN](README_CN.md)
 # 🌾 Simulasi Bertani dengan Python
 
 ![Python](https://img.shields.io/badge/python-3.x-blue.svg)
