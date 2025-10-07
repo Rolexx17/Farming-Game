@@ -1,18 +1,18 @@
-EN | [ID](docs/README_ID.md) | [CN](docs/README_CN.md)
-# 🌾 Farming Game: A Python Farming Sim
+[EN](../README.md) | ID | [CN](README_CN.md)
+# 🌾 Simulasi Bertani dengan Python
 
 ![Python](https://img.shields.io/badge/python-3.x-blue.svg)
-![Concepts](https://img.shields.io/badge/concepts-OOP_&_Inheritance-blueviolet.svg)
+![Concepts](https://img.shields.io/badge/konsep-PBO_&_Pewarisan-blueviolet.svg)
 
-Welcome to **Farming Game**, a command-line farming simulation game built with Python. Manage your farm, plant crops, raise animals, and sell your products at the market. Your goal is to survive as long as possible by managing your money and paying an ever-increasing daily tax. This project is a comprehensive demonstration of Object-Oriented Programming, featuring inheritance, abstract classes, and a modular design.
+Selamat datang di **Simulasi Bertani Python**, sebuah game simulasi pertanian berbasis baris perintah (command-line) yang dibangun dengan Python. Kelola pertanian Anda, tanam tanaman, beternak hewan, dan jual produk Anda di pasar. Tujuan Anda adalah bertahan selama mungkin dengan mengelola uang Anda dan membayar pajak harian yang terus meningkat. Proyek ini adalah demonstrasi komprehensif Pemrograman Berbasis Objek, yang menampilkan pewarisan, kelas abstrak, dan desain modular.
 
 ---
 
-## 🎮 Gameplay Demo
+## 🎮 Demo Gameplay
 
-The entire game runs in your terminal, providing a clear and interactive farming experience.
+Seluruh permainan berjalan di terminal Anda, memberikan pengalaman bertani yang jelas dan interaktif.
 
-**Manage your farm, inventory, and check the time all in one screen:**
+**Kelola pertanian, inventaris, dan periksa waktu Anda dalam satu layar:**
 ```
 ================================================================================
 🧑‍🌾 FARMER: KELVIN | ⭐ LV: 1 | 💰 MONEY: $75 | 🗓️ DAY: 1 | ⏰ TIME: 08:00 | 📈 EXP: 0/20
@@ -50,32 +50,32 @@ Choose action (1-6):
 
 ---
 
-## ✨ Core Features
+## ✨ Fitur Utama
 
--   **Farming Simulation**: Plant crops, raise animals, and manage your farm's limited space.
--   **Dynamic Day Cycle**: Time advances as you perform actions. The day ends at 22:00, automatically triggering daily taxes, market restocks, and neglect checks.
--   **Economic Challenge**: Start with limited funds, buy seeds and animals from a dynamic market, sell your products, and pay a daily tax that increases over time. Go bankrupt, and it's game over!
--   **Leveling & Progression**: Gain EXP from harvesting and collecting to level up. Each level increases your farm size and inventory capacity.
--   **Dynamic Market**: The market's stock of seeds and animals changes randomly every day, requiring you to adapt your strategy.
--   **Neglect System**: Plants and animals must be cared for daily. If neglected, their growth will decrease, and they can eventually die and disappear from your farm.
--   **Resource Management**: Carefully balance your time, money, farm space, and inventory capacity to survive for as many days as possible.
-
----
-
-## 🛠️ Technical Showcase
-
-This project is a practical demonstration of key programming principles:
-
--   **Object-Oriented Programming (OOP)**: The entire project is built around a clear hierarchy of classes, including `Game`, `Player`, `Farm`, `Market`, and `FarmObject`.
--   **Abstract Base Classes (ABCs)**: The `FarmObject` class is an abstract class that defines a common interface for all farm entities, ensuring that both `Plant` and `Animal` have consistent methods.
--   **Inheritance**: `Plant` and `Animal` inherit from `FarmObject`. Specific types like `Wheat`, `Corn`, `Chicken`, and `Cow` then inherit from `Plant` or `Animal`, demonstrating a multi-level inheritance structure.
--   **Modular Design**: The code is separated into logical modules (`Entities`, `Game.py`, etc.), making the project organized and easy to maintain.
+-   **Simulasi Pertanian**: Tanam tanaman, beternak hewan, dan kelola ruang terbatas di pertanian Anda.
+-   **Siklus Hari Dinamis**: Waktu berjalan seiring Anda melakukan tindakan. Hari berakhir pada pukul 22:00, yang secara otomatis memicu pajak harian, pengisian ulang stok pasar, dan pemeriksaan kelalaian.
+-   **Tantangan Ekonomi**: Mulai dengan dana terbatas, beli bibit dan hewan dari pasar yang dinamis, jual produk Anda, dan bayar pajak harian yang meningkat seiring waktu. Jika bangkrut, permainan berakhir!
+-   **Level & Progresi**: Dapatkan EXP dari panen dan pengumpulan untuk naik level. Setiap level meningkatkan ukuran pertanian dan kapasitas inventaris Anda.
+-   **Pasar Dinamis**: Stok bibit dan hewan di pasar berubah secara acak setiap hari, mengharuskan Anda untuk menyesuaikan strategi.
+-   **Sistem Kelalaian**: Tanaman dan hewan harus dirawat setiap hari. Jika diabaikan, pertumbuhan mereka akan berkurang, dan akhirnya mereka bisa mati dan hilang dari pertanian Anda.
+-   **Manajemen Sumber Daya**: Seimbangkan waktu, uang, ruang pertanian, dan kapasitas inventaris Anda dengan hati-hati untuk bertahan selama mungkin.
 
 ---
 
-## 🏛️ Architecture & Class Diagram
+## 🛠️ Pameran Teknis
 
-The game's architecture is managed by the `Game` class, which holds instances of `Player`, `Farm`, and `Market`. The `Farm` contains a list of `FarmObject`s, which are concrete instances of `Plant` and `Animal` subclasses.
+Proyek ini adalah demonstrasi praktis dari prinsip-prinsip utama pemrograman:
+
+-   **Pemrograman Berbasis Objek (PBO/OOP)**: Seluruh proyek dibangun di sekitar hierarki kelas yang jelas, termasuk `Game`, `Player`, `Farm`, `Market`, dan `FarmObject`.
+-   **Kelas Dasar Abstrak (ABC)**: Kelas `FarmObject` adalah kelas abstrak yang mendefinisikan antarmuka umum untuk semua entitas pertanian, memastikan bahwa `Plant` dan `Animal` memiliki metode yang konsisten.
+-   **Pewarisan (Inheritance)**: `Plant` dan `Animal` mewarisi dari `FarmObject`. Tipe spesifik seperti `Wheat`, `Corn`, `Chicken`, dan `Cow` kemudian mewarisi dari `Plant` atau `Animal`, menunjukkan struktur pewarisan multi-level.
+-   **Desain Modular**: Kode dipisahkan ke dalam modul-modul logis (`Entities`, `Game.py`, dll.), membuat proyek terorganisir dan mudah dipelihara.
+
+---
+
+## 🏛️ Arsitektur & Diagram Kelas
+
+Arsitektur game dikelola oleh kelas `Game`, yang menampung instance dari `Player`, `Farm`, dan `Market`. `Farm` berisi daftar `FarmObject`, yang merupakan instance konkret dari subkelas `Plant` dan `Animal`.
 
 ```mermaid
 classDiagram
@@ -143,24 +143,24 @@ classDiagram
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Cara Memulai
 
-No external libraries are needed to run this game.
+Tidak ada *library* eksternal yang diperlukan untuk menjalankan game ini.
 
-### Prerequisites
+### Prasyarat
 - Python 3.x
 
-### Running the Game
-1.  Ensure all project files are in the same directory structure.
-2.  Open a terminal or command prompt.
-3.  Navigate to the project's root directory.
-4.  Run the main game file:
+### Menjalankan Game
+1.  Pastikan semua file proyek berada dalam struktur direktori yang sama.
+2.  Buka terminal atau *command prompt*.
+3.  Arahkan ke direktori utama proyek.
+4.  Jalankan file game utama:
     ```sh
     python Game.py
     ```
-5.  Enter your name and follow the on-screen menus to play!
+5.  Masukkan nama Anda dan ikuti menu di layar untuk bermain!
 
-## 👤 Authors & Contributors
+## 👤 Kontributor
 
 <table border="0" cellspacing="10" cellpadding="5">
   <tr>
