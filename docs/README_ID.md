@@ -1,81 +1,164 @@
 [EN](../README.md) | ID | [CN](README_CN.md)
-# 🌾 Simulasi Bertani dengan Python
 
-![Python](https://img.shields.io/badge/python-3.x-blue.svg)
-![Concepts](https://img.shields.io/badge/konsep-PBO_&_Pewarisan-blueviolet.svg)
+# 🌾 Farming Game
 
-Selamat datang di **Simulasi Bertani Python**, sebuah game simulasi pertanian berbasis baris perintah (command-line) yang dibangun dengan Python. Kelola pertanian Anda, tanam tanaman, beternak hewan, dan jual produk Anda di pasar. Tujuan Anda adalah bertahan selama mungkin dengan mengelola uang Anda dan membayar pajak harian yang terus meningkat. Proyek ini adalah demonstrasi komprehensif Pemrograman Berbasis Objek, yang menampilkan pewarisan, kelas abstrak, dan desain modular.
+**Farming Game** adalah simulasi bertani berbasis terminal yang dibuat dengan Python. Tanam tanaman, pelihara hewan, kelola sumber daya, dan bertahan dari pajak harian yang terus meningkat. Bisakah kamu bertahan dan sukses sebagai petani?
 
 ---
 
-## 🎮 Demo Gameplay
+## Daftar Isi
 
-Seluruh permainan berjalan di terminal Anda, memberikan pengalaman bertani yang jelas dan interaktif.
+- [Fitur](#fitur)
+- [Pratinjau Permainan](#pratinjau-permainan)
+- [Gambaran Umum Permainan](#gambaran-umum-permainan)
+- [Instalasi](#instalasi)
+- [Memulai](#memulai)
+- [Struktur Kode](#struktur-kode)
+- [Arsitektur & Diagram Kelas](#arsitektur--diagram-kelas)
+- [Lokalisasi](#lokalisasi)
+- [Kontribusi](#kontribusi)
+- [Penulis](#penulis)
+- [Kontak & Umpan Balik](#kontak--umpan-balik)
 
-**Kelola pertanian, inventaris, dan periksa waktu Anda dalam satu layar:**
+---
+
+## Fitur
+
+- **Antarmuka Berbasis Teks:** Mainkan secara interaktif di terminal kamu.
+- **Manajemen Pertanian:** Tanam dan panen tanaman, beri makan dan pelihara hewan.
+- **Pasar Dinamis:** Beli benih dan hewan, jual produkmu; stok pasar di-reset tiap hari.
+- **Sistem Level:** Naik level untuk memperluas kapasitas pertanian dan inventori.
+- **Siklus Siang/Malam:** Setiap aksi menghabiskan waktu; hari berakhir pukul 22:00.
+- **Sistem Penelantaran:** Tanaman/hewan yang tidak dirawat akan kehilangan pertumbuhan atau mati.
+- **Ekonomi Bertahan:** Bayar pajak harian yang terus naik; bangkrut berarti game over.
+- **Dokumentasi Multi-bahasa:** Tersedia dalam Bahasa Inggris, Indonesia, dan Mandarin.
+
+---
+
+## 🎮 Pratinjau Permainan
+
+Saat kamu memulai Farming Game, kamu akan melihat tampilan status yang jelas dan interaktif:
+
 ```
 ================================================================================
-🧑‍🌾 FARMER: KELVIN | ⭐ LV: 1 | 💰 MONEY: $75 | 🗓️ DAY: 1 | ⏰ TIME: 08:00 | 📈 EXP: 0/20
+🧑‍🌾 PETANI: ALEX  |  ⭐ LV: 3  |  💰 UANG: $125  |  🗓️ HARI: 5  |  ⏰ WAKTU: 12:00  |  📈 EXP: 34/50
 ================================================================================
 
 ==================================================
-🚜 FARM STATUS
+🚜 STATUS PERTANIAN
 --------------------------------------------------
-[1 ] 🌱 Wheat       (1 slot) [3/3 ] -> READY! (Action: ✅)
-[2 ] 🌱 Wheat       (1 slot) [2/3 ] -> Growing... (Action: ✅)
-[3 ] 🌱 Wheat       (1 slot) [1/3 ] -> LOW GROWTH! (Action: ❌)
-[4 ] 🐄 Cow         (3 slot) [5/5 ] -> READY! (Action: ✅)
+[1 ] 🌱 Gandum      (1 slot) [3/3 ] -> SIAP PANEN! (Aksi: ✅)
+[2 ] 🌱 Jagung      (1 slot) [1/3 ] -> PERTUMBUHAN RENDAH! (Aksi: ❌)
+[3 ] 🐄 Sapi        (3 slot) [5/5 ] -> SIAP PANEN! (Aksi: ✅)
+[4 ] 🐔 Ayam        (1 slot) [2/2 ] -> SIAP PANEN! (Aksi: ✅)
 --------------------------------------------------
-SLOTS USED: 6/15 | REMAINING SLOTS: 9
+SLOT TERPAKAI: 6/18 | SLOT TERSISA: 12
 
 ==================================================
-🎒 INVENTORY
+🎒 INVENTORI
 --------------------------------------------------
-  Milk           : 2 QTY
+  Gandum         : 2 QTY
+  Susu           : 1 QTY
+  Telur          : 3 QTY
 --------------------------------------------------
-SLOTS USED: 2/15
+SLOT TERPAKAI: 3/20
 
 ==================================================
-📜 MAIN MENU:
+📜 MENU UTAMA:
 ==================================================
- 1    Water plants (💧 +1 hour per plant)
- 2    Feed animals (🥕 +1 hour per animal)
- 3    Harvest & Collect (🌾🥚 END DAY/Collect All)
- 4    Market Menu (🛒 Buy/Sell)
- 5    View Game Rules (📚)
- 6    Quit game (🚪)
+  1    Siram tanaman (💧 +1 jam per tanaman)
+  2    Beri makan hewan (🥕 +1 jam per hewan)
+  3    Panen & Koleksi (🌾🥚 AKHIRI HARI/Koleksi Semua)
+  4    Menu Pasar (🛒 Beli/Jual)
+  5    Lihat Aturan Permainan (📚)
+  6    Keluar permainan (🚪)
 ==================================================
-Choose action (1-6):
+Pilih aksi (1-6):
 ```
 
----
-
-## ✨ Fitur Utama
-
--   **Simulasi Pertanian**: Tanam tanaman, beternak hewan, dan kelola ruang terbatas di pertanian Anda.
--   **Siklus Hari Dinamis**: Waktu berjalan seiring Anda melakukan tindakan. Hari berakhir pada pukul 22:00, yang secara otomatis memicu pajak harian, pengisian ulang stok pasar, dan pemeriksaan kelalaian.
--   **Tantangan Ekonomi**: Mulai dengan dana terbatas, beli bibit dan hewan dari pasar yang dinamis, jual produk Anda, dan bayar pajak harian yang meningkat seiring waktu. Jika bangkrut, permainan berakhir!
--   **Level & Progresi**: Dapatkan EXP dari panen dan pengumpulan untuk naik level. Setiap level meningkatkan ukuran pertanian dan kapasitas inventaris Anda.
--   **Pasar Dinamis**: Stok bibit dan hewan di pasar berubah secara acak setiap hari, mengharuskan Anda untuk menyesuaikan strategi.
--   **Sistem Kelalaian**: Tanaman dan hewan harus dirawat setiap hari. Jika diabaikan, pertumbuhan mereka akan berkurang, dan akhirnya mereka bisa mati dan hilang dari pertanian Anda.
--   **Manajemen Sumber Daya**: Seimbangkan waktu, uang, ruang pertanian, dan kapasitas inventaris Anda dengan hati-hati untuk bertahan selama mungkin.
+**Aksi kamu:**
+- Lihat status pertumbuhan tanaman dan hewan, termasuk yang siap dipanen atau butuh perhatian.
+- Siram tanaman, beri makan hewan, panen, koleksi hasil ternak, dan kelola inventori.
+- Kunjungi pasar untuk membeli benih/hewan atau menjual hasil panen.
+- Bertahan tiap hari saat pajak naik, perluas pertanian dan capai level baru.
+- Jika tanaman/hewan diabaikan, mereka kehilangan pertumbuhan dan bisa mati. Jika uang habis, permainan berakhir!
 
 ---
 
-## 🛠️ Pameran Teknis
+## Gambaran Umum Permainan
 
-Proyek ini adalah demonstrasi praktis dari prinsip-prinsip utama pemrograman:
+Farming Game adalah simulasi manajemen sumber daya. Setiap giliran mewakili satu hari di pertanianmu. Seimbangkan waktu, uang, dan ruang untuk mengoptimalkan hasil pertanian dan bertahan selama mungkin.
 
--   **Pemrograman Berbasis Objek (PBO/OOP)**: Seluruh proyek dibangun di sekitar hierarki kelas yang jelas, termasuk `Game`, `Player`, `Farm`, `Market`, dan `FarmObject`.
--   **Kelas Dasar Abstrak (ABC)**: Kelas `FarmObject` adalah kelas abstrak yang mendefinisikan antarmuka umum untuk semua entitas pertanian, memastikan bahwa `Plant` dan `Animal` memiliki metode yang konsisten.
--   **Pewarisan (Inheritance)**: `Plant` dan `Animal` mewarisi dari `FarmObject`. Tipe spesifik seperti `Wheat`, `Corn`, `Chicken`, dan `Cow` kemudian mewarisi dari `Plant` atau `Animal`, menunjukkan struktur pewarisan multi-level.
--   **Desain Modular**: Kode dipisahkan ke dalam modul-modul logis (`Entities`, `Game.py`, dll.), membuat proyek terorganisir dan mudah dipelihara.
+**Elemen Utama Permainan:**
+- Tanam dan siram tanaman
+- Beri makan dan koleksi hasil dari hewan
+- Jual produk di pasar dengan stok yang berubah-ubah
+- Bayar pajak harian
+- Hindari bangkrut dan pertahankan keberhasilan pertanianmu
+- Naik level untuk membuka slot pertanian dan kapasitas inventori lebih banyak
 
 ---
 
-## 🏛️ Arsitektur & Diagram Kelas
+## Instalasi
 
-Arsitektur game dikelola oleh kelas `Game`, yang menampung instance dari `Player`, `Farm`, dan `Market`. `Farm` berisi daftar `FarmObject`, yang merupakan instance konkret dari subkelas `Plant` dan `Animal`.
+### Prasyarat
+
+- Python 3.x (Tidak butuh dependensi eksternal)
+
+### Langkah Instalasi
+
+1. Clone repositori:
+   ```sh
+   git clone https://github.com/Rolexx17/Farming-Game.git
+   cd Farming-Game
+   ```
+
+2. (Opsional) Buat virtual environment:
+   ```sh
+   python -m venv venv
+   source venv/bin/activate  # Windows: venv\Scripts\activate
+   ```
+
+---
+
+## Memulai
+
+1. Pastikan semua file sudah di struktur direktori yang benar.
+2. Jalankan file utama:
+   ```sh
+   python Game.py
+   ```
+3. Masukkan nama kamu saat diminta.
+4. Ikuti instruksi menu untuk bermain.
+
+---
+
+## Struktur Kode
+
+```
+Farming-Game/
+├── Game.py                # Loop utama & menu game
+├── Entities/              # Modul utama logika game
+│   ├── Farm.py            # Manajemen pertanian & slot tanaman/hewan
+│   ├── Farm_Object.py     # Kelas abstrak & utama untuk entitas pertanian
+│   ├── Inventory.py       # Logika inventori produk dan kapasitas
+│   ├── Market.py          # Logika pasar beli/jual
+│   ├── Player.py          # Statistik, level, dan progres pemain
+│   └── Utils.py           # Fungsi utilitas & konstanta
+├── README.md
+├── .gitignore
+└── docs/
+    ├── README_ID.md       # Dokumentasi Bahasa Indonesia
+    └── README_CN.md       # Dokumentasi Bahasa Mandarin
+```
+
+Lihat direktori [Entities](Entities/) untuk logika modular dan definisi kelas.
+
+---
+
+## Arsitektur & Diagram Kelas
+
+Kode menggunakan prinsip OOP untuk kemudahan pengembangan dan skalabilitas.
 
 ```mermaid
 classDiagram
@@ -143,24 +226,26 @@ classDiagram
 
 ---
 
-## 🚀 Cara Memulai
+## Lokalisasi
 
-Tidak ada *library* eksternal yang diperlukan untuk menjalankan game ini.
+- [Bahasa Inggris](README.md)
+- [Bahasa Indonesia](README_ID.md)
+- [Bahasa Mandarin](README_CN.md)
 
-### Prasyarat
-- Python 3.x
+---
 
-### Menjalankan Game
-1.  Pastikan semua file proyek berada dalam struktur direktori yang sama.
-2.  Buka terminal atau *command prompt*.
-3.  Arahkan ke direktori utama proyek.
-4.  Jalankan file game utama:
-    ```sh
-    python Game.py
-    ```
-5.  Masukkan nama Anda dan ikuti menu di layar untuk bermain!
+## Kontribusi
 
-## 👤 Kontributor
+Kontribusi, saran, dan penambahan fitur sangat diterima!
+
+- Fork repositori
+- Buat branch (`git checkout -b nama-fitur`)
+- Commit perubahanmu
+- Buka pull request
+
+---
+
+## Penulis
 
 <table border="0" cellspacing="10" cellpadding="5">
   <tr>
@@ -188,3 +273,10 @@ Tidak ada *library* eksternal yang diperlukan untuk menjalankan game ini.
     
   </tr>
 </table>
+
+---
+
+## Kontak & Umpan Balik
+
+Buka issue atau PR untuk bug, permintaan fitur, atau umpan balik.  
+Untuk kontak langsung, gunakan profil GitHub di atas.

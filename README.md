@@ -1,81 +1,164 @@
 EN | [ID](docs/README_ID.md) | [CN](docs/README_CN.md)
-# 🌾 Farming Game: A Python Farming Sim
 
-![Python](https://img.shields.io/badge/python-3.x-blue.svg)
-![Concepts](https://img.shields.io/badge/concepts-OOP_&_Inheritance-blueviolet.svg)
+# 🌾 Farming Game
 
-Welcome to **Farming Game**, a command-line farming simulation game built with Python. Manage your farm, plant crops, raise animals, and sell your products at the market. Your goal is to survive as long as possible by managing your money and paying an ever-increasing daily tax. This project is a comprehensive demonstration of Object-Oriented Programming, featuring inheritance, abstract classes, and a modular design.
+**Farming Game** is a terminal-based farming simulation built in Python. Grow crops, raise animals, juggle resources, and outlast the rising daily tax. Can you survive and thrive as a farmer?
 
 ---
 
-## 🎮 Gameplay Demo
+## Table of Contents
 
-The entire game runs in your terminal, providing a clear and interactive farming experience.
+- [Features](#features)
+- [Gameplay Preview](#gameplay-preview)
+- [Game Overview](#game-overview)
+- [Installation](#installation)
+- [Getting Started](#getting-started)
+- [Code Structure](#code-structure)
+- [Architecture & Class Diagram](#architecture--class-diagram)
+- [Localization](#localization)
+- [Contributing](#contributing)
+- [Authors](#authors)
+- [Contact & Feedback](#contact--feedback)
 
-**Manage your farm, inventory, and check the time all in one screen:**
+---
+
+## Features
+
+- **Text-Based Interface:** Play interactively in your terminal.
+- **Farm Management:** Plant and harvest crops, feed and raise animals.
+- **Dynamic Market:** Buy seeds and animals, sell your products; market stock resets daily.
+- **Progression System:** Level up to expand your farm and inventory capacities.
+- **Day/Night Cycle:** Actions consume time; day ends at 22:00.
+- **Neglect System:** Crops/animals lose growth or die if neglected.
+- **Economic Survival:** Pay daily taxes that increase as days progress; bankruptcy ends the game.
+- **Multi-language Documentation:** English, Indonesian, and Chinese versions available.
+
+---
+
+## 🎮 Gameplay Preview
+
+When you launch Farming Game, you'll be greeted by a clear, interactive status screen:
+
 ```
 ================================================================================
-🧑‍🌾 FARMER: KELVIN | ⭐ LV: 1 | 💰 MONEY: $75 | 🗓️ DAY: 1 | ⏰ TIME: 08:00 | 📈 EXP: 0/20
+🧑‍🌾 FARMER: ALEX  |  ⭐ LV: 3  |  💰 MONEY: $125  |  🗓️ DAY: 5  |  ⏰ TIME: 12:00  |  📈 EXP: 34/50
 ================================================================================
 
 ==================================================
 🚜 FARM STATUS
 --------------------------------------------------
 [1 ] 🌱 Wheat       (1 slot) [3/3 ] -> READY! (Action: ✅)
-[2 ] 🌱 Wheat       (1 slot) [2/3 ] -> Growing... (Action: ✅)
-[3 ] 🌱 Wheat       (1 slot) [1/3 ] -> LOW GROWTH! (Action: ❌)
-[4 ] 🐄 Cow         (3 slot) [5/5 ] -> READY! (Action: ✅)
+[2 ] 🌱 Corn        (1 slot) [1/3 ] -> LOW GROWTH! (Action: ❌)
+[3 ] 🐄 Cow         (3 slot) [5/5 ] -> READY! (Action: ✅)
+[4 ] 🐔 Chicken     (1 slot) [2/2 ] -> READY! (Action: ✅)
 --------------------------------------------------
-SLOTS USED: 6/15 | REMAINING SLOTS: 9
+SLOTS USED: 6/18 | REMAINING SLOTS: 12
 
 ==================================================
 🎒 INVENTORY
 --------------------------------------------------
-  Milk           : 2 QTY
+  Wheat          : 2 QTY
+  Milk           : 1 QTY
+  Egg            : 3 QTY
 --------------------------------------------------
-SLOTS USED: 2/15
+SLOTS USED: 3/20
 
 ==================================================
 📜 MAIN MENU:
 ==================================================
- 1    Water plants (💧 +1 hour per plant)
- 2    Feed animals (🥕 +1 hour per animal)
- 3    Harvest & Collect (🌾🥚 END DAY/Collect All)
- 4    Market Menu (🛒 Buy/Sell)
- 5    View Game Rules (📚)
- 6    Quit game (🚪)
+  1    Water plants (💧 +1 hour per plant)
+  2    Feed animals (🥕 +1 hour per animal)
+  3    Harvest & Collect (🌾🥚 END DAY/Collect All)
+  4    Market Menu (🛒 Buy/Sell)
+  5    View Game Rules (📚)
+  6    Quit game (🚪)
 ==================================================
 Choose action (1-6):
 ```
 
----
-
-## ✨ Core Features
-
--   **Farming Simulation**: Plant crops, raise animals, and manage your farm's limited space.
--   **Dynamic Day Cycle**: Time advances as you perform actions. The day ends at 22:00, automatically triggering daily taxes, market restocks, and neglect checks.
--   **Economic Challenge**: Start with limited funds, buy seeds and animals from a dynamic market, sell your products, and pay a daily tax that increases over time. Go bankrupt, and it's game over!
--   **Leveling & Progression**: Gain EXP from harvesting and collecting to level up. Each level increases your farm size and inventory capacity.
--   **Dynamic Market**: The market's stock of seeds and animals changes randomly every day, requiring you to adapt your strategy.
--   **Neglect System**: Plants and animals must be cared for daily. If neglected, their growth will decrease, and they can eventually die and disappear from your farm.
--   **Resource Management**: Carefully balance your time, money, farm space, and inventory capacity to survive for as many days as possible.
+**Your actions:**
+- See the growth status of your crops and animals, including which are ready to harvest or need attention.
+- Water plants, feed animals, harvest crops, collect animal products, and manage your inventory.
+- Visit the market to buy seeds/animals or sell your produce.
+- Survive each day as taxes increase, striving to expand your farm and reach new levels.
+- If you neglect crops or animals, they lose growth and may die. Run out of money, and it's game over!
 
 ---
 
-## 🛠️ Technical Showcase
+## Game Overview
 
-This project is a practical demonstration of key programming principles:
+Farming Game is a resource management simulation. Each turn represents a day on your farm. Balance time, money, and space to optimize your farm’s output and survive as many days as possible.
 
--   **Object-Oriented Programming (OOP)**: The entire project is built around a clear hierarchy of classes, including `Game`, `Player`, `Farm`, `Market`, and `FarmObject`.
--   **Abstract Base Classes (ABCs)**: The `FarmObject` class is an abstract class that defines a common interface for all farm entities, ensuring that both `Plant` and `Animal` have consistent methods.
--   **Inheritance**: `Plant` and `Animal` inherit from `FarmObject`. Specific types like `Wheat`, `Corn`, `Chicken`, and `Cow` then inherit from `Plant` or `Animal`, demonstrating a multi-level inheritance structure.
--   **Modular Design**: The code is separated into logical modules (`Entities`, `Game.py`, etc.), making the project organized and easy to maintain.
+**Core Gameplay Elements:**
+- Plant and water crops
+- Feed and collect from animals
+- Sell products at a market with variable stock
+- Pay daily taxes
+- Avoid bankruptcy and keep your farm thriving
+- Level up to unlock more farm slots and inventory space
 
 ---
 
-## 🏛️ Architecture & Class Diagram
+## Installation
 
-The game's architecture is managed by the `Game` class, which holds instances of `Player`, `Farm`, and `Market`. The `Farm` contains a list of `FarmObject`s, which are concrete instances of `Plant` and `Animal` subclasses.
+### Prerequisites
+
+- Python 3.x (No external dependencies required)
+
+### Setup
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/Rolexx17/Farming-Game.git
+   cd Farming-Game
+   ```
+
+2. (Optional) Create a virtual environment:
+   ```sh
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+---
+
+## Getting Started
+
+1. Ensure all files are in the correct directory structure.
+2. Run the main game file:
+   ```sh
+   python Game.py
+   ```
+3. Enter your name when prompted.
+4. Follow the menu instructions to play.
+
+---
+
+## Code Structure
+
+```
+Farming-Game/
+├── Game.py                # Main game loop and menu
+├── Entities/              # Core modules for game logic
+│   ├── Farm.py            # Farm management and crop/animal slots
+│   ├── Farm_Object.py     # Abstract base and main classes for farm entities
+│   ├── Inventory.py       # Inventory logic for products and capacity
+│   ├── Market.py          # Market logic for buying/selling
+│   ├── Player.py          # Player stats, level, and progression
+│   └── Utils.py           # Utility functions and constants
+├── README.md
+├── .gitignore
+└── docs/
+    ├── README_ID.md       # Indonesian translation
+    └── README_CN.md       # Chinese translation
+```
+
+See the [Entities](Entities/) directory for modular logic and class definitions.
+
+---
+
+## Architecture & Class Diagram
+
+The code uses object-oriented principles for maintainability and scalability.
 
 ```mermaid
 classDiagram
@@ -143,48 +226,57 @@ classDiagram
 
 ---
 
-## 🚀 Getting Started
+## Localization
 
-No external libraries are needed to run this game.
+- [English](README.md)
+- [Indonesian](docs/README_ID.md)
+- [Chinese](docs/README_CN.md)
 
-### Prerequisites
-- Python 3.x
+---
 
-### Running the Game
-1.  Ensure all project files are in the same directory structure.
-2.  Open a terminal or command prompt.
-3.  Navigate to the project's root directory.
-4.  Run the main game file:
-    ```sh
-    python Game.py
-    ```
-5.  Enter your name and follow the on-screen menus to play!
+## Contributing
 
-## 👤 Authors & Contributors
+Pull requests, suggestions, and feature additions are welcome!
+
+- Fork the repository
+- Create a branch (`git checkout -b feature-name`)
+- Commit your changes
+- Open a pull request
+
+---
+
+## Authors
 
 <table border="0" cellspacing="10" cellpadding="5">
   <tr>
     <td align="center" style="border: 1px solid #555; padding: 10px;">
       <a href="https://github.com/Rolexx17">
-        <img src="https://github.com/Rolexx17.png" width="100" height="100" alt="Rolexx17" style="border-radius: 50%;"/>
+        <img src="https://github.com/Rolexx17.png" width="100" height="100" alt="Jess2Jes" style="border-radius: 50%;"/>
       </a>
       <br/>
-      <a href="https://github.com/Rolexx17">Justin Wisely</a>
+      <a href="https://github.com/Rolexx17">Rolexx17</a>
     </td>
     <td align="center" style="border: 1px solid #555; padding: 10px;">
       <a href="https://github.com/cherriebuns">
-        <img src="https://github.com/cherriebuns.png" width="100" height="100" alt="cherriebuns" style="border-radius: 50%;"/>
+        <img src="https://github.com/cherriebuns.png" width="100" height="100" alt="Hans 展豪" style="border-radius: 50%;"/>
       </a>
       <br/>
-      <a href="https://github.com/cherriebuns">Cherish Evangeline</a>
+      <a href="https://github.com/cherriebuns">cherriebuns</a>
     </td>
     <td align="center" style="border: 1px solid #555; padding: 10px;">
-      <a href="https://github.com/isthatyou-aye">
-        <img src="https://github.com/isthatyou-aye.png" width="100" height="100" alt="isthatyou-aye" style="border-radius: 50%;"/>
+      <a href="https://github.com/Rolexx17">
+        <img src="https://github.com/Rolexx17.png" width="100" height="100" alt="Jess2Jes" style="border-radius: 50%;"/>
       </a>
       <br/>
-      <a href="https://github.com/isthatyou-aye">Kelvin Kurniawan</a>
+      <a href="https://github.com/Rolexx17">Rolexx17</a>
     </td>
     
   </tr>
 </table>
+
+---
+
+## Contact & Feedback
+
+Open issues or PRs for bugs, feature requests, or feedback.  
+For direct contact, reach out via GitHub profiles above.
