@@ -22,7 +22,7 @@
 
 ---
 
-## Fitur
+## 🌟 Fitur
 
 - **Antarmuka Berbasis Teks:** Mainkan secara interaktif di terminal kamu.
 - **Manajemen Pertanian:** Tanam dan panen tanaman, beri makan dan pelihara hewan.
@@ -85,7 +85,7 @@ Pilih aksi (1-6):
 
 ---
 
-## Gambaran Umum Permainan
+## 📝 Gambaran Umum Permainan
 
 Farming Game adalah simulasi manajemen sumber daya. Setiap giliran mewakili satu hari di pertanianmu. Seimbangkan waktu, uang, dan ruang untuk mengoptimalkan hasil pertanian dan bertahan selama mungkin.
 
@@ -99,7 +99,7 @@ Farming Game adalah simulasi manajemen sumber daya. Setiap giliran mewakili satu
 
 ---
 
-## Instalasi
+## 💻 Instalasi
 
 ### Prasyarat
 
@@ -121,7 +121,7 @@ Farming Game adalah simulasi manajemen sumber daya. Setiap giliran mewakili satu
 
 ---
 
-## Memulai
+## 🚀 Memulai
 
 1. Pastikan semua file sudah di struktur direktori yang benar.
 2. Jalankan file utama:
@@ -133,7 +133,7 @@ Farming Game adalah simulasi manajemen sumber daya. Setiap giliran mewakili satu
 
 ---
 
-## Struktur Kode
+## 📂 Struktur Kode
 
 ```
 Farming-Game/
@@ -156,7 +156,7 @@ Lihat direktori [Entities](Entities/) untuk logika modular dan definisi kelas.
 
 ---
 
-## Arsitektur & Diagram Kelas
+## 🏗️ Arsitektur & Diagram Kelas
 
 Kode menggunakan prinsip OOP untuk kemudahan pengembangan dan skalabilitas.
 
@@ -226,15 +226,7 @@ classDiagram
 
 ---
 
-## Lokalisasi
-
-- [Bahasa Inggris](README.md)
-- [Bahasa Indonesia](README_ID.md)
-- [Bahasa Mandarin](README_CN.md)
-
----
-
-## Kontribusi
+## 🤝 Kontribusi
 
 Kontribusi, saran, dan penambahan fitur sangat diterima!
 
@@ -245,7 +237,7 @@ Kontribusi, saran, dan penambahan fitur sangat diterima!
 
 ---
 
-## Penulis
+## 👥 Penulis
 
 <table border="0" cellspacing="10" cellpadding="5">
   <tr>
@@ -276,7 +268,7 @@ Kontribusi, saran, dan penambahan fitur sangat diterima!
 
 ---
 
-## Kontak & Umpan Balik
+## 📬 Kontak & Umpan Balik
 
 Buka issue atau PR untuk bug, permintaan fitur, atau umpan balik.  
 Untuk kontak langsung, gunakan profil GitHub di atas.

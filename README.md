@@ -22,7 +22,7 @@ EN | [ID](docs/README_ID.md) | [CN](docs/README_CN.md)
 
 ---
 
-## Features
+## 🌟 Features
 
 - **Text-Based Interface:** Play interactively in your terminal.
 - **Farm Management:** Plant and harvest crops, feed and raise animals.
@@ -85,7 +85,7 @@ Choose action (1-6):
 
 ---
 
-## Game Overview
+## 📝 Game Overview
 
 Farming Game is a resource management simulation. Each turn represents a day on your farm. Balance time, money, and space to optimize your farm’s output and survive as many days as possible.
 
@@ -99,7 +99,7 @@ Farming Game is a resource management simulation. Each turn represents a day on 
 
 ---
 
-## Installation
+## 💻 Installation
 
 ### Prerequisites
 
@@ -121,7 +121,7 @@ Farming Game is a resource management simulation. Each turn represents a day on 
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
 1. Ensure all files are in the correct directory structure.
 2. Run the main game file:
@@ -133,7 +133,7 @@ Farming Game is a resource management simulation. Each turn represents a day on 
 
 ---
 
-## Code Structure
+## 📂 Code Structure
 
 ```
 Farming-Game/
@@ -156,7 +156,7 @@ See the [Entities](Entities/) directory for modular logic and class definitions.
 
 ---
 
-## Architecture & Class Diagram
+## 🏗️ Architecture & Class Diagram
 
 The code uses object-oriented principles for maintainability and scalability.
 
@@ -226,15 +226,7 @@ classDiagram
 
 ---
 
-## Localization
-
-- [English](README.md)
-- [Indonesian](docs/README_ID.md)
-- [Chinese](docs/README_CN.md)
-
----
-
-## Contributing
+## 🤝 Contributing
 
 Pull requests, suggestions, and feature additions are welcome!
 
@@ -245,7 +237,7 @@ Pull requests, suggestions, and feature additions are welcome!
 
 ---
 
-## Authors
+## 👥 Authors
 
 <table border="0" cellspacing="10" cellpadding="5">
   <tr>
@@ -276,7 +268,7 @@ Pull requests, suggestions, and feature additions are welcome!
 
 ---
 
-## Contact & Feedback
+## 📬 Contact & Feedback
 
 Open issues or PRs for bugs, feature requests, or feedback.  
 For direct contact, reach out via GitHub profiles above.
