@@ -256,11 +256,11 @@ classDiagram
       <a href="https://github.com/cherriebuns">cherriebuns</a>
     </td>
     <td align="center" style="border: 1px solid #555; padding: 10px;">
-      <a href="https://github.com/Rolexx17">
-        <img src="https://github.com/Rolexx17.png" width="100" height="100" alt="Jess2Jes" style="border-radius: 50%;"/>
+      <a href="https://github.com/isthatyou-aye">
+        <img src="https://github.com/isthatyou-aye.png" width="100" height="100" alt="isthatyou-aye" style="border-radius: 50%;"/>
       </a>
       <br/>
-      <a href="https://github.com/Rolexx17">Rolexx17</a>
+      <a href="https://github.com/isthatyou-aye">Kelvin Kurniawan</a>
     </td>
     
   </tr>
