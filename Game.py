@@ -180,11 +180,6 @@ class Game:
                     and o.growth < o.max_growth
                     and not o._action_done_today
                 ]
-                # waterable_items = []
-                # for i, o in enumerate(self.farm.objects):
-                #     if isinstance(o, Plant):
-                #         if o.growth < o.max_growth and not o._action_done_today:
-                #             waterable_items.append(f"{i+1}. {o.name} ({o.growth}/{o.max_growth})")
 
                 if not waterable_items:
                     print("⚠️ No plants available to water (either fully grown, already watered, or none planted).")
