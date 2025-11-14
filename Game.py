@@ -1,10 +1,13 @@
 import sys
+import asyncio
 from Entities.Utils import clear, print_title, print_separator, SEPARATOR_LENGTH, WAKE_UP_HOUR, BED_TIME
 from Entities.Player import Player
 from Entities.Market import Market
 from Entities.Farm import Farm
 from Entities.Farm_Object import Plant, Animal, Wheat, Corn, Chicken, Cow
 
+async def idle():
+    await asyncio.sleep(0)
 
 class Game:
     def __init__(self):
@@ -128,6 +131,7 @@ class Game:
 
     def actions(self):
         while True:
+            asyncio.run(idle())
             clear()
             # Status Bar 
             print("=" * 80) 
@@ -169,17 +173,28 @@ class Game:
                 print("❌ You are too tired for this activity. Time to sleep!")
             
             elif choice == "1" and can_act:
-                waterable_items = []
-                for i, o in enumerate(self.farm.objects):
-                    if isinstance(o, Plant):
-                        if o.growth < o.max_growth and not o._action_done_today:
-                            waterable_items.append(f"{i+1}. {o.name} ({o.growth}/{o.max_growth})")
+                waterable_items = [
+                    f"{i+1}. {o.name} ({o.growth}/{o.max_growth})"
+                    for i, o in enumerate(self.farm.objects)
+                    if isinstance(o, Plant)
+                    and o.growth < o.max_growth
+                    and not o._action_done_today
+                ]
+                # waterable_items = []
+                # for i, o in enumerate(self.farm.objects):
+                #     if isinstance(o, Plant):
+                #         if o.growth < o.max_growth and not o._action_done_today:
+                #             waterable_items.append(f"{i+1}. {o.name} ({o.growth}/{o.max_growth})")
 
                 if not waterable_items:
                     print("⚠️ No plants available to water (either fully grown, already watered, or none planted).")
                 else:
+                    def water_gen(items):
+                        for it in items:
+                            yield it
+
                     print("\n💧 Available Plants to Water:")
-                    for item in waterable_items:
+                    for item in water_gen(waterable_items):
                         print(f" - {item}")
                     
                     indices_str = input("Enter plant numbers to water (e.g., 1,3): ").strip()
@@ -199,8 +214,13 @@ class Game:
                     print("⚠️ No animals available to feed (either ready to produce, already fed, or none).")
                 else:
                     print("\n🥕 Available Animals to Feed:")
-                    for item in feedable_items:
-                        print(f" - {item}")
+                    item_iter = iter(feedable_items)
+                    while True:
+                        try:
+                            item = next(item_iter)
+                            print(f" - {item}")
+                        except StopIteration:
+                            break
 
                     indices_str = input("Enter animal numbers to feed (e.g., 2,4): ").strip()
                     actions_done = self.farm.perform_action_on_selected(indices_str, 'feed')
