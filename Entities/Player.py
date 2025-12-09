@@ -8,20 +8,29 @@ class Player:
         self._exp = 0
         self._money = 120
         self.inventory = Inventory()
-        self._farm_size = 10 
-        self.inventory.add_item("Wheat", 5) 
+        self._farm_size = 10
+        self.inventory.add_item("Wheat", 5)
 
     @property
-    def name(self): return self._name
+    def name(self):
+        return self._name
+
     @property
-    def level(self): return self._level
+    def level(self):
+        return self._level
+
     @property
-    def money(self): return self._money
+    def money(self):
+        return self._money
+
     @property
-    def exp(self): return self._exp
+    def exp(self):
+        return self._exp
+
     @property
-    def farm_size(self): return self._farm_size
-    
+    def farm_size(self):
+        return self._farm_size
+
     def change_money(self, amount):
         self._money += amount
 

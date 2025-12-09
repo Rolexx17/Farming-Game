@@ -2,7 +2,7 @@ from Entities.Utils import SEPARATOR_LENGTH, print_separator
 
 class Inventory:
     def __init__(self):
-        self.items = {} 
+        self.items = {}
         self.max_capacity = 10
 
     def add_item(self, name, quantity=1):
@@ -29,19 +29,17 @@ class Inventory:
     def show_inventory(self):
         print("\n" + "=" * SEPARATOR_LENGTH)
         print("🎒 INVENTORY")
-        
+
         if not self.items:
             print_separator()
             print(" - Empty.")
         else:
             product_names = ["Wheat", "Corn", "Tomato", "Egg", "Milk"]
             items_list = list(self.items.items())
-            sorted_items = []
             in_list = []
             not_in_list = []
             for item in items_list:
                 key = item[0]
-                value = item[1]
                 if key in product_names:
                     in_list.append(item)
                 else:
@@ -49,10 +47,9 @@ class Inventory:
             sorted_items = in_list + not_in_list
 
             print_separator()
-
             for item, qty in sorted_items:
                 print(f"  {item:<15}: {qty} QTY")
-                
+
         total_items = sum(self.items.values())
         print_separator()
         print(f"SLOTS USED: {total_items}/{self.max_capacity}")

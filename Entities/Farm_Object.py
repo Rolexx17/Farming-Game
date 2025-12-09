@@ -11,24 +11,20 @@ class FarmObject(ABC):
         self._action_done_today = False
 
     @property
-    @abstractmethod
     def name(self):
-        pass
+        return self._name
 
     @property
-    @abstractmethod
     def size(self):
-        pass
+        return self._size
 
     @property
-    @abstractmethod
     def product_name(self):
-        pass
+        return self._product_name
 
     @property
-    @abstractmethod
     def product_exp(self):
-        pass
+        return self._product_exp
 
     @property
     def growth(self):
@@ -55,22 +51,6 @@ class FarmObject(ABC):
 
 
 class Plant(FarmObject):
-    @property
-    def name(self):
-        return self._name
-
-    @property
-    def size(self):
-        return self._size
-
-    @property
-    def product_name(self):
-        return self._product_name
-
-    @property
-    def product_exp(self):
-        return self._product_exp
-
     def action(self):
         if self._action_done_today:
             print(f"💧 {self.name} already watered today!")
@@ -87,6 +67,7 @@ class Plant(FarmObject):
         return self._growth >= self._max_growth
 
     def reset_after_collection(self):
+        # Plants are removed upon collection (handled by Farm)
         pass
 
     def check_daily_neglect(self):
@@ -98,9 +79,11 @@ class Plant(FarmObject):
             print(f"🍂 Neglect: {self.name} was not watered and lost 1 growth ({self._growth}/{self._max_growth}).")
         return False
 
+
 class Wheat(Plant):
     def __init__(self):
         super().__init__("Wheat", 3, 1, "Wheat", 5)
+
 
 class Corn(Plant):
     def __init__(self):
@@ -108,22 +91,6 @@ class Corn(Plant):
 
 
 class Animal(FarmObject):
-    @property
-    def name(self):
-        return self._name
-
-    @property
-    def size(self):
-        return self._size
-
-    @property
-    def product_name(self):
-        return self._product_name
-
-    @property
-    def product_exp(self):
-        return self._product_exp
-
     def action(self):
         if self._action_done_today:
             print(f"🥕 {self.name} already fed today!")
