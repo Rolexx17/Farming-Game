@@ -4,7 +4,7 @@ from Entities.Utils import SEPARATOR_LENGTH, print_separator
 class Farm:
     def __init__(self, player):
         self.player = player
-        self.objects = []
+        self.objects = [] # Composite of FarmObjects
         self.current_used = 0
 
     def add_object(self, obj):
@@ -15,122 +15,61 @@ class Farm:
         return True
 
     def show_farm(self):
-        print("\n" + "=" * SEPARATOR_LENGTH)
-        print("🚜 FARM STATUS")
+        print("\n" + "=" * SEPARATOR_LENGTH + "\n🚜 FARM STATUS")
         print_separator()
-
         if not self.objects:
-            print(" - No plants or animals on your farm yet.")
+            print(" - No plants or animals yet.")
         else:
             for i, o in enumerate(self.objects):
-                status_text = "READY!" if o.harvestable_or_collectable() else "Growing..."
+                status = "READY!" if o.harvestable_or_collectable() else "Growing..."
                 icon = "🌱" if isinstance(o, Plant) else "🐄"
-
-                if o.growth <= 0 and not o.harvestable_or_collectable():
-                    status_text = "DYING!"
-                    icon = "🥀" if isinstance(o, Plant) else "💀"
-                elif o.growth == 1 and not o.harvestable_or_collectable():
-                    status_text = "LOW GROWTH!"
-
-                action_status = "✅" if o._action_done_today else "❌"
-
-                print(
-                    f"[{i+1:<2}] {icon} {o.name:<11} ({o.size} slot) [{o.growth}/{o.max_growth:<2}] -> {status_text} (Action: {action_status})"
-                )
-
-        remaining = self.player.farm_size - self.current_used
+                act = "✅" if o._action_done_today else "❌"
+                print(f"[{i+1:<2}] {icon} {o.name:<11} ({o.size} slot) [{o.growth}/{o.max_growth}] -> {status} ({act})")
         print_separator()
-        print(f"SLOTS USED: {self.current_used}/{self.player.farm_size} | REMAINING SLOTS: {remaining}")
+        print(f"SLOTS USED: {self.current_used}/{self.player.farm_size}")
 
     def perform_action_on_selected(self, indices_str, action_type):
-        successful_actions = 0
+        valid_indices = []
         try:
-            temp = []
-            for i in indices_str.split(','):
-                clean_i = i.strip()
-                if clean_i:
-                    temp.append(int(clean_i))
-            index = [i - 1 for i in temp]
-        except ValueError:
-            print("❌ Invalid input format. Please use numbers separated by commas (e.g., 1,3).")
-            return 0
+            valid_indices = [int(i.strip()) - 1 for i in indices_str.split(',') if i.strip()]
+        except ValueError: return 0
 
-        valid_type = Plant if action_type == 'water' else Animal
-
-        for i in index:
+        success = 0
+        target_type = Plant if action_type == 'water' else Animal
+        for i in valid_indices:
             if 0 <= i < len(self.objects):
                 obj = self.objects[i]
-                if isinstance(obj, valid_type):
-                    if obj.action():
-                        successful_actions += 1
-                else:
-                    print(f"⚠️ Item {i+1} ({obj.name}) is not a {action_type}able item.")
-            else:
-                print(f"⚠️ Item {i+1} is out of range.")
-
-        if successful_actions > 0:
-            print(f"✅ Action completed on {successful_actions} item(s). Time elapsed: {successful_actions} hour(s).")
-
-        return successful_actions
+                if isinstance(obj, target_type) and obj.action():
+                    success += 1
+        return success
 
     def harvest_collect_all(self, player):
-        harvested_items = {}
-        total_exp = 0
+        items_gained, total_exp = {}, 0
+        keep, reset = [], []
 
-        objects_to_keep = []
-        objects_to_reset = []
-
-        print("\n--- Collecting Items ---")
         for o in self.objects:
             if o.harvestable_or_collectable():
                 if player.inventory.add_item(o.product_name, 1):
-                    harvested_items[o.product_name] = harvested_items.get(o.product_name, 0) + 1
+                    items_gained[o.product_name] = items_gained.get(o.product_name, 0) + 1
                     total_exp += o.product_exp
-                    print(f"✅ Gathered 1x {o.product_name} from {o.name}. (+{o.product_exp} EXP)")
+                    if isinstance(o, Plant): self.current_used -= o.size
+                    else: 
+                        reset.append(o)
+                        keep.append(o)
+                else: keep.append(o)
+            else: keep.append(o)
 
-                    if isinstance(o, Plant):
-                        self.current_used -= o.size
-                        # Plant removed implicitly
-                    elif isinstance(o, Animal):
-                        objects_to_reset.append(o)
-                        objects_to_keep.append(o)
-                else:
-                    print(f"⚠️ Inventory full! Could not collect from {o.name}. Try selling items first.")
-                    objects_to_keep.append(o)
-            else:
-                objects_to_keep.append(o)
-
-        for o in objects_to_reset:
-            o.reset_after_collection()
-
-        self.objects = objects_to_keep
-
-        harvested_count = sum(harvested_items.values())
-        return harvested_count > 0, harvested_items, total_exp
+        for o in reset: o.reset_after_collection()
+        self.objects = keep
+        return len(items_gained) > 0, items_gained, total_exp
 
     def reset_daily_statuses(self):
-        print("\n--- Daily Maintenance Check ---")
-        objects_after_neglect = []
-        neglect_used_slots = 0
-
+        alive = []
         for o in self.objects:
-            if isinstance(o, Plant) or isinstance(o, Animal):
-                is_dead = o.check_daily_neglect()
-
-                if not is_dead:
-                    objects_after_neglect.append(o)
-                    neglect_used_slots += o.size
-                else:
-                    self.current_used -= o.size
+            if o.check_daily_neglect():
+                self.current_used -= o.size
+                print(f"💀 Death: {o.name} died from neglect!")
             else:
-                objects_after_neglect.append(o)
-                neglect_used_slots += o.size
-
-        self.objects = objects_after_neglect
-        self.current_used = neglect_used_slots
-
-        for o in self.objects:
-            if isinstance(o, Plant) or isinstance(o, Animal):
                 o.reset_daily_status()
-
-        print("--- Daily Maintenance Complete ---")
+                alive.append(o)
+        self.objects = alive

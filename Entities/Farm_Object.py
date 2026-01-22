@@ -11,40 +11,26 @@ class FarmObject(ABC):
         self._action_done_today = False
 
     @property
-    def name(self):
-        return self._name
-
+    def name(self): return self._name
     @property
-    def size(self):
-        return self._size
-
+    def size(self): return self._size
     @property
-    def product_name(self):
-        return self._product_name
-
+    def product_name(self): return self._product_name
     @property
-    def product_exp(self):
-        return self._product_exp
-
+    def product_exp(self): return self._product_exp
     @property
-    def growth(self):
-        return self._growth
-
+    def growth(self): return self._growth
     @property
-    def max_growth(self):
-        return self._max_growth
+    def max_growth(self): return self._max_growth
 
     @abstractmethod
-    def action(self):
-        pass
+    def action(self): pass
 
     @abstractmethod
-    def harvestable_or_collectable(self):
-        pass
+    def harvestable_or_collectable(self): pass
 
     @abstractmethod
-    def reset_after_collection(self):
-        pass
+    def reset_after_collection(self): pass
 
     def reset_daily_status(self):
         self._action_done_today = False
@@ -66,9 +52,7 @@ class Plant(FarmObject):
     def harvestable_or_collectable(self):
         return self._growth >= self._max_growth
 
-    def reset_after_collection(self):
-        # Plants are removed upon collection (handled by Farm)
-        pass
+    def reset_after_collection(self): pass
 
     def check_daily_neglect(self):
         if not self._action_done_today and not self.harvestable_or_collectable():
